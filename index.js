@@ -35,6 +35,7 @@ app.use(
          keys: ["getmetharapy"], 
          maxAge: 24 * 60 * 60 * 1000, 
          credentials: true,
+         sameSite: "none",
          secure: process.env.NODE_ENV === "PRODUCTION"
     })
 );
