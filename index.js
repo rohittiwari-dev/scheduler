@@ -34,9 +34,9 @@ app.use(
          name: "session",
          keys: ["getmetharapy"], 
          maxAge: 24 * 60 * 60 * 1000, 
-         credentials: true,
+         httpOnly: true,
          sameSite: "none",
-         secure: process.env.NODE_ENV === "PRODUCTION"
+         secure: false
     })
 );
 app.use(
