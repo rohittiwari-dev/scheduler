@@ -33,17 +33,14 @@ app.use(
     cookieSession({
         name: "session",
         keys: ["getmetharapy"],
-        maxAge: 24 * 60 * 60 * 1000, // 24 hours
-        secure: true, // Requires HTTPS for cookies
-        sameSite: "none", // For cross-site cookies
-        httpOnly: true, // Prevents client-side JavaScript access
+        maxAge: 24 * 60 * 60 * 1000
     })
 );
 
 // CORS configuration
 app.use(
     cors({
-        origin: ["http://localhost:5173", "https://scheduler-frontend-mdvv.onrender.com", "http://localhost:4173"],
+        origin: '*',
         methods: "GET,POST,PUT,DELETE",
         credentials: true, // Allow credentials (cookies)
         allowedHeaders: ["Content-Type", "Authorization"], // Customize allowed headers
