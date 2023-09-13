@@ -23,6 +23,7 @@ import appointmentRoute from "./routes/appointmentRoute.js";
 /* Express App Configuration and Middleware*/
 const app = express();
 // CORS configuration
+app.set("trust proxy",1);
 app.use(
     cors({
         origin: 'https://scheduler-frontend-mdvv.onrender.com',
@@ -32,6 +33,7 @@ app.use(
         exposedHeaders: ["Custom-Header"], // Customize exposed headers
     })
 );
+
 app.use(express.json());
 app.use(helmet());
 app.use(helmet.crossOriginResourcePolicy({policy: "cross-origin"}));
