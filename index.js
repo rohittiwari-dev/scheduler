@@ -22,6 +22,16 @@ import appointmentRoute from "./routes/appointmentRoute.js";
 
 /* Express App Configuration and Middleware*/
 const app = express();
+// CORS configuration
+app.use(
+    cors({
+        origin: 'https://scheduler-frontend-mdvv.onrender.com',
+        methods: "GET,POST,PUT,DELETE",
+        credentials: true, // Allow credentials (cookies)
+        allowedHeaders: ["Content-Type", "Authorization"], // Customize allowed headers
+        exposedHeaders: ["Custom-Header"], // Customize exposed headers
+    })
+);
 app.use(express.json());
 app.use(helmet());
 app.use(helmet.crossOriginResourcePolicy({policy: "cross-origin"}));
@@ -37,23 +47,8 @@ app.use(
     })
 );
 
-// CORS configuration
-app.use(
-    cors({
-        origin: 'https://scheduler-frontend-mdvv.onrender.com',
-        methods: "GET,POST,PUT,DELETE",
-        credentials: true, // Allow credentials (cookies)
-        allowedHeaders: ["Content-Type", "Authorization"], // Customize allowed headers
-        exposedHeaders: ["Custom-Header"], // Customize exposed headers
-    })
-);
-app.use((req, res, next) => {
-    res.setHeader("X-Content-Type-Options", "nosniff");
-    res.setHeader("X-Frame-Options", "deny");
-    res.setHeader("Strict-Transport-Security", "max-age=31536000; includeSubDomains");
-    res.setHeader("Content-Security-Policy", "default-src 'self'");
-    next();
-});
+
+
 
 app.use(passport.initialize());
 app.use(passport.session());
