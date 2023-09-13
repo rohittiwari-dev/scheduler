@@ -32,14 +32,14 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(
     cookieSession({
         name: "session",
-        keys: ["calendly-clone getmetharapy"],
+        keys: "getmetharapy",
         maxAge: 24 * 60 * 60 * 100,
         credentials: true,
     })
 );
 app.use(
     cors({
-        origin: ["http://localhost:5173","https://devschedule.netlify.app","https://6501f7b96cfc3a2bf321522d--devschedule.netlify.app/","http://localhost:4173"],
+        origin: ["http://localhost:5173" , "https://scheduler-frontend-mdvv.onrender.com" , "http://localhost:4173"],
         methods: "GET,POST,PUT,DELETE",
         credentials: true,
     })
