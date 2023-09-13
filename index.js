@@ -31,10 +31,11 @@ app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(
     cookieSession({
-        name: "session",
-        keys: "getmetharapy",
-        maxAge: 24 * 60 * 60 * 100,
-        credentials: true,
+         name: "session",
+         keys: ["getmetharapy"], 
+         maxAge: 24 * 60 * 60 * 1000, 
+         credentials: true,
+         secure: process.env.NODE_ENV === "PRODUCTION"
     })
 );
 app.use(
