@@ -31,21 +31,33 @@ app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(
     cookieSession({
-         name: "session",
-         keys: ["getmetharapy"], 
-         maxAge: 24 * 60 * 60 * 1000, 
-         httpOnly: true,
-         sameSite: "none",
-         secure: false
+        name: "session",
+        keys: ["getmetharapy"],
+        maxAge: 24 * 60 * 60 * 1000, // 24 hours
+        secure: true, // Requires HTTPS for cookies
+        sameSite: "none", // For cross-site cookies
+        httpOnly: true, // Prevents client-side JavaScript access
     })
 );
+
+// CORS configuration
 app.use(
     cors({
-        origin: ["http://localhost:5173" , "https://scheduler-frontend-mdvv.onrender.com" , "http://localhost:4173"],
+        origin: ["http://localhost:5173", "https://scheduler-frontend-mdvv.onrender.com", "http://localhost:4173"],
         methods: "GET,POST,PUT,DELETE",
-        credentials: true,
+        credentials: true, // Allow credentials (cookies)
+        allowedHeaders: ["Content-Type", "Authorization"], // Customize allowed headers
+        exposedHeaders: ["Custom-Header"], // Customize exposed headers
     })
 );
+app.use((req, res, next) => {
+    res.setHeader("X-Content-Type-Options", "nosniff");
+    res.setHeader("X-Frame-Options", "deny");
+    res.setHeader("Strict-Transport-Security", "max-age=31536000; includeSubDomains");
+    res.setHeader("Content-Security-Policy", "default-src 'self'");
+    next();
+});
+
 app.use(passport.initialize());
 app.use(passport.session());
 
