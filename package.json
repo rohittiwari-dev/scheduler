@@ -1,0 +1,37 @@
+{
+	"name": "schedular-backend",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"type": "module",
+	"scripts": {
+		"dev": "nodemon index.js"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"basic-auth": "^2.0.1",
+		"bcrypt": "^5.1.1",
+		"body-parser": "^1.20.2",
+		"concurrently": "^8.2.1",
+		"cookie-parser": "^1.4.6",
+		"cookie-session": "^2.0.0",
+		"cors": "^2.8.5",
+		"dotenv": "^16.3.1",
+		"express": "^4.18.2",
+		"googleapis": "^105.0.0",
+		"helmet": "^7.0.0",
+		"http-status-codes": "^2.2.0",
+		"ics": "^3.4.0",
+		"jsonwebtoken": "^9.0.2",
+		"morgan": "^1.10.0",
+		"mysql2": "^3.6.0",
+		"nodemailer": "^6.9.5",
+		"nodemon": "^3.0.1",
+		"passport": "^0.5.0",
+		"passport-google-oauth20": "^2.0.0",
+		"path": "^0.12.7",
+		"util": "^0.12.5"
+	}
+}
