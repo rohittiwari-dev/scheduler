@@ -40,7 +40,7 @@ app.use(
 // CORS configuration
 app.use(
     cors({
-        origin: '*',
+        origin: 'https://scheduler-frontend-mdvv.onrender.com',
         methods: "GET,POST,PUT,DELETE",
         credentials: true, // Allow credentials (cookies)
         allowedHeaders: ["Content-Type", "Authorization"], // Customize allowed headers
