@@ -34,6 +34,7 @@ app.use(
         name: "session",
         keys: ["calendly-clone getmetharapy"],
         maxAge: 24 * 60 * 60 * 100,
+        credentials: true,
     })
 );
 app.use(
