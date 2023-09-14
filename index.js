@@ -33,8 +33,12 @@ const corsConfig = cors({
 });
 app.use(corsConfig);
 let ALLOWED_ORIGINS = [
+	"*",
 	"https://scheduler-frontend-mdvv.onrender.com",
 	"https://devschedule.netlify.app",
+	"https://*.onrender.com",
+	"https://*.netlify.app","https://onrender.com",
+	"https://netlify.app",
 	"http://localhost:5173",
 	"http://localhost:4173",
 ];
