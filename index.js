@@ -24,16 +24,46 @@ import appointmentRoute from "./routes/appointmentRoute.js";
 const app = express();
 // CORS configuration
 app.set("trust proxy",1);
+
+const corsConfig = cors({
+  origin: "*",
+  methods: "GET",
+  credentials: true,
+  optionsSuccessStatus: 200,
+});
+app.use(corsConfig);
+let ALLOWED_ORIGINS = [
+	"https://scheduler-frontend-mdvv.onrender.com",
+	"https://devschedule.netlify.app",
+	"http://localhost:5173",
+	"http://localhost:4173",
+];
 app.use(
     cors({
-        origin: 'https://scheduler-frontend-mdvv.onrender.com',
+        origin: ALLOWED_ORIGINS,
         methods: "*",
-        credentials: true, // Allow credentials (cookies)
-        allowedHeaders: '*', // Customize allowed headers
-        exposedHeaders: '*', // Customize exposed headers
+        credentials: true, 
+        allowedHeaders: '*', 
     })
 );
+var corsOptions = {
+	origin: ALLOWED_ORIGINS,
+	credentials: true,
+};
 
+app.use(cors(corsOptions));
+app.use((req, res, next) => {
+	let origin = req.headers.origin;
+	let theOrigin =
+		ALLOWED_ORIGINS.indexOf(origin) >= 0 ? origin : ALLOWED_ORIGINS[0];
+	res.header("Access-Control-Allow-Origin", theOrigin);
+	res.header(
+		"Access-Control-Allow-Headers",
+		"Origin, X-Requested-With, Content-Type, Accept"
+	);
+
+	next();
+});
 app.use(express.json());
 app.use(helmet());
 app.use(helmet.crossOriginResourcePolicy({policy: "cross-origin"}));
