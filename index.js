@@ -42,7 +42,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // );
 app.use(
 	cors({
-		origin: ["http://localhost:5173", "http://localhost:4173"],
+		origin: ["http://localhost:5173","https://scheduler-frontend-mdvv.onrender.com" , "http://localhost:4173"],
 		methods: "GET,POST,PUT,DELETE",
 		credentials: true,
 	})
