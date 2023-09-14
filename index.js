@@ -8,6 +8,7 @@ import helmet from "helmet";
 import bodyParser from "body-parser";
 import passport from "passport";
 import cookieSession from "cookie-session";
+import session from "express-session";
 /* Local Import */
 import GlobalErrorHandler from "./middleware/GlobalErrorHandler.js";
 import JWTActions from "./utils/JWTActions.js";
