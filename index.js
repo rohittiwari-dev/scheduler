@@ -27,10 +27,10 @@ app.set("trust proxy",1);
 app.use(
     cors({
         origin: 'https://scheduler-frontend-mdvv.onrender.com',
-        methods: "GET,POST,PUT,DELETE",
+        methods: "*",
         credentials: true, // Allow credentials (cookies)
-        allowedHeaders: ["Content-Type", "Authorization"], // Customize allowed headers
-        exposedHeaders: ["Custom-Header"], // Customize exposed headers
+        allowedHeaders: '*', // Customize allowed headers
+        exposedHeaders: '*', // Customize exposed headers
     })
 );
 
