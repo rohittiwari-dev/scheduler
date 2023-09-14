@@ -30,20 +30,34 @@ app.use(morgan("common"));
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(
+// 	cookieSession({
+// 		name: "session",
+// 		keys: ["getmetharapy"],
+// 		maxAge: 24 * 60 * 60 * 100,
+// 		httpOnly: true,
+// 		sameSite: true,
+// 	})
+// );
 app.use(
-	cookieSession({
-		name: "session",
-		keys: ["getmetharapy"],
-		maxAge: 24 * 60 * 60 * 100,
-		httpOnly: true,
-		sameSite: true,
+	cors({
+		origin: ["http://localhost:5173", "http://localhost:4173"],
+		methods: "GET,POST,PUT,DELETE",
+		credentials: true,
 	})
 );
 app.use(
-	cors({
-		origin: ["http://localhost:5173","https://scheduler-frontend-mdvv.onrender.com","http://localhost:4173"],
-		methods: "GET,POST,PUT,DELETE",
-		credentials: true,
+	session({
+		secret: "getmetharapy",
+		resave: false,
+		saveUninitialized: false,
+		cookie: {
+			secure: false,
+			maxAge: 24 * 60 * 60 * 1000,
+			httpOnly: true,
+			sameSite: "none",
+			secure: true,
+		},
 	})
 );
 app.use(passport.initialize());
