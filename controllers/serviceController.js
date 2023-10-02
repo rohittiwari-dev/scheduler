@@ -128,22 +128,16 @@ export const handleCreateService = async (req, res) => {
     let mysqlQuery;
     let queryParams;
 
-    if (service_location && price_per_hour && service_duration) {
-        mysqlQuery = `INSERT INTO SERVICE_TABLE (SERVICE_TYPE,SERVICE_NAME,SERVICE_DURATION,SERVICE_LOCATION,AVAILABILITY,PRICE_PER_HOUR,HOST_EMAIL) VALUES (?,?,?,?,?,?,?)`;
-        queryParams = [service_type, service_name, service_duration, service_location, availability, price_per_hour, host_email];
-    } else if (service_location) {
-        mysqlQuery = `INSERT INTO SERVICE_TABLE (SERVICE_TYPE,SERVICE_NAME,SERVICE_LOCATION,AVAILABILITY,HOST_EMAIL) VALUES (?,?,?,?,?)`;
-        queryParams = [service_type, service_name, service_location, availability, host_email];
-    } else if (price_per_hour) {
-        mysqlQuery = `INSERT INTO SERVICE_TABLE (SERVICE_TYPE,SERVICE_NAME,AVAILABILITY,PRICE_PER_HOUR,HOST_EMAIL) VALUES (?,?,?,?,?)`;
-        queryParams = [service_type, service_name, availability, price_per_hour, host_email];
-    } else if (service_duration) {
-        mysqlQuery = `INSERT INTO SERVICE_TABLE (SERVICE_TYPE,SERVICE_NAME,SERVICE_DURATION,AVAILABILITY,HOST_EMAIL) VALUES (?,?,?,?,?)`;
-        queryParams = [service_type, service_name, service_duration, availability, host_email];
-    } else {
-        mysqlQuery = `INSERT INTO SERVICE_TABLE (SERVICE_TYPE,SERVICE_NAME,AVAILABILITY,HOST_EMAIL) VALUES (?,?,?,?)`;
-        queryParams = [service_type, service_name, availability, host_email];
-    }
+	mysqlQuery = `INSERT INTO SERVICE_TABLE (SERVICE_TYPE, SERVICE_NAME, SERVICE_DURATION, SERVICE_LOCATION, AVAILABILITY, PRICE_PER_HOUR, HOST_EMAIL) VALUES (?, ?, ?, ?, ?, ?, ?)`;
+	queryParams = [
+		service_type,
+		service_name,
+		service_duration || "00:30:00",
+		service_location || "Google Meet",
+		availability,
+		price_per_hour || "0",
+		host_email,
+	];
 
     const [rows, fields] = await db.promisePool.query(mysqlQuery, queryParams);
     new ApiResponse(res, 201, "Successfully Service Created", rows);
