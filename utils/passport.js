@@ -34,7 +34,7 @@ passport.use(
 						);
 					}
 				} else {
-					const query = `INSERT INTO USER_TABLE (ID,NAME,GIVEN_NAME,FAMILY_NAME,EMAIL,PICTURE,TYPE,EMAIL_VERIFIED,REFRESH_TOKEN,ACCESS_TOKEN) VALUES ('${userInfo.sub}','${userInfo.name}','${userInfo.given_name}','${userInfo.family_name}','${userInfo.email}','${userInfo.picture}','consultant',${userInfo.email_verified},'${refreshToken}','${accessToken}')`;
+					const query = `INSERT INTO USER_TABLE (ID,NAME,GIVEN_NAME,FAMILY_NAME,EMAIL,PICTURE,TYPE,EMAIL_VERIFIED,REFRESH_TOKEN,ACCESS_TOKEN) VALUES ('${userInfo.sub}','${userInfo.name}','${userInfo.given_name}','${userInfo.family_name}','${userInfo.email}','${userInfo.picture}','CONSULTANT',${userInfo.email_verified},'${refreshToken}','${accessToken}')`;
 					const [rows, fields] = await db.promisePool.query(query);
 				}
 			} catch (err) {
