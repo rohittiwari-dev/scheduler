@@ -23,7 +23,7 @@ import appointmentRoute from "./routes/appointmentRoute.js";
 
 /* Express App Configuration and Middleware*/
 const app = express();
-app.set("trust proxy", 1);
+app.set("trust proxy", 3);
 app.use(express.json());
 app.use(helmet());
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
@@ -113,6 +113,7 @@ app.listen(PORT, (err) => {
 	if (err) console.error(err);
 	else console.log("Server started at ", PORT);
 });
+
 
 
 
