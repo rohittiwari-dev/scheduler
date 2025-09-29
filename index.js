@@ -31,16 +31,16 @@ app.use(morgan("common"));
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(
-	cookieSession({
-		name: "session",
-		keys: ["getmetharapy"],
-		maxAge: 24 * 60 * 60 * 100,
-		httpOnly: true,
-		sameSite: "none",
-		secure:true
-	})
-);
+// app.use(
+// 	cookieSession({
+// 		name: "session",
+// 		keys: ["getmetharapy"],
+// 		maxAge: 24 * 60 * 60 * 100,
+// 		httpOnly: true,
+// 		sameSite: "none",
+// 		secure:true
+// 	})
+// );
 app.use(
 	cors({
 		origin: ["http://localhost:5173","https://scheduler-frontend-mdvv.onrender.com","https://6501f7b96cfc3a2bf321522d--devschedule.netlify.app","https://devschedule.netlify.app" , "http://localhost:4173"],
@@ -57,7 +57,7 @@ app.use(
 			secure: false,
 			maxAge: 24 * 60 * 60 * 1000,
 			httpOnly: true,
-			sameSite: "none",
+			sameSite: "lax",
 			secure: true,
 		},
 	})
@@ -115,4 +115,5 @@ app.listen(PORT, (err) => {
 	if (err) console.error(err);
 	else console.log("Server started at ", PORT);
 });
+
 
