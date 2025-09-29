@@ -37,8 +37,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // 		keys: ["getmetharapy"],
 // 		maxAge: 24 * 60 * 60 * 100,
 // 		httpOnly: true,
-// 		sameSite: "none",
-// 		secure:true
+// 		sameSite: true,
 // 	})
 // );
 app.use(
@@ -57,8 +56,8 @@ app.use(
 			secure: false,
 			maxAge: 24 * 60 * 60 * 1000,
 			httpOnly: true,
-			sameSite: "lax",
-			secure: false,
+			sameSite: "none",
+			secure: true,
 		},
 	})
 );
@@ -115,6 +114,3 @@ app.listen(PORT, (err) => {
 	if (err) console.error(err);
 	else console.log("Server started at ", PORT);
 });
-
-
-
