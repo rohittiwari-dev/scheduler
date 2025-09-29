@@ -53,11 +53,11 @@ app.use(
 		resave: false,
 		saveUninitialized: false,
 		cookie: {
-			secure: false,
 			maxAge: 24 * 60 * 60 * 1000,
 			httpOnly: true,
-			sameSite: "none",
+			sameSite: true,
 			secure: true,
+			expires: new Date(Date.now() + 86400000),
 		},
 	})
 );
@@ -114,3 +114,4 @@ app.listen(PORT, (err) => {
 	if (err) console.error(err);
 	else console.log("Server started at ", PORT);
 });
+
