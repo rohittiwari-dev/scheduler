@@ -55,7 +55,7 @@ app.use(
 		cookie: {
 			maxAge: 24 * 60 * 60 * 1000,
 			httpOnly: true,
-			sameSite: "lax",
+			sameSite: "none",
 			secure: true,
 		},
 	})
@@ -113,5 +113,6 @@ app.listen(PORT, (err) => {
 	if (err) console.error(err);
 	else console.log("Server started at ", PORT);
 });
+
 
 
